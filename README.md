@@ -26,12 +26,21 @@ Additionally:
 
 ## Building and deploying the Sample application
 
+### Using Postgres StatefulStore
+
+By default, the StatefulServices rely on an in-memory StatefulStore.  To use a Postgres-based StatefulStore you'll have to create one and then change the StatefulService configurations below to use it.
+
+Deploy the store to your project namespace
+```
+kubectl apply -f deploy/statefulstore-chat.yaml -n <project_name>
+statefulstore.cloudstate.io/postgres-store-chat created
+````
+
 ### Friends Service
 ```
 cd friends
 npm install
 npm run prestart
-
 ```
 
 This will compile the protobuf and `user-function.desc`.
@@ -56,8 +65,10 @@ metadata:
   name: friends
 spec:
   containers:
-  - image: coreyauger/friends:latest    # <-- Change this to your image
+  - image: lightbend-docker-registry.bintray.io/cloudstate-chat-sample/friends:latest    # <-- Change this to your image
     name: friends
+  #statefulStore:    # <-- Uncomment these two lines to use the Postgres statefulstore                                                         
+    #name: postgres-store-chat  
 ```
 
 Deploy the service to your project namespace
@@ -71,7 +82,6 @@ statefulservice.cloudstate.io/friends created
 cd ../presence
 npm install
 npm run prestart
-
 ```
 
 This will compile the protobuf and `user-function.desc`
@@ -95,8 +105,10 @@ metadata:
   name: presence
 spec:
   containers:
-  - image: coreyauger/presence:latest    # <-- Change this to your image
+  - image: lightbend-docker-registry.bintray.io/cloudstate-chat-sample/presence:latest    # <-- Change this to your image
     name: presence
+  #statefulStore:    # <-- Uncomment these two lines to use the Postgres statefulstore                                                         
+    #name: postgres-store-chat  
 ```
 
 Deploy the service to your project namespace
@@ -157,8 +169,10 @@ metadata:
   name: chat
 spec:
   containers:
-  - image: coreyauger/chat:latest    # <-- Change this to your image
+  - image: lightbend-docker-registry.bintray.io/cloudstate-chat-sample/chat:latest    # <-- Change this to your image
     name: chat
+  #statefulStore:    # <-- Uncomment these two lines to use the Postgres statefulstore                                                         
+    #name: postgres-store-chat  
 ```
 
 Deploy the service to your project namespace
