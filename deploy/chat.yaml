@@ -7,5 +7,6 @@ spec:
   containers:
   - image: lightbend-docker-registry.bintray.io/cloudstate-chat-sample/chat:latest
     name: chat
-  #statefulStore:    # <-- Uncomment these two lines to use the Postgres statefulstore
-    #name: postgres-store-chat
+  #storeConfig:    # <-- Uncomment these three lines to use the Postgres statefulstore
+    #statefulStore:
+      #name: postgres-store-chat
