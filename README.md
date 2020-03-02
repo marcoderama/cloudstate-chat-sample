@@ -67,8 +67,10 @@ spec:
   containers:
   - image: lightbend-docker-registry.bintray.io/cloudstate-chat-sample/friends:latest    # <-- Change this to your image
     name: friends
-  #statefulStore:    # <-- Uncomment these two lines to use the Postgres statefulstore                                                         
-    #name: postgres-store-chat  
+  #storeConfig:    # <-- Uncomment these four lines to use the Postgres statefulstore
+    #database: friends
+    #statefulStore:
+      #name: postgres-store-chat
 ```
 
 Deploy the service to your project namespace
@@ -107,8 +109,10 @@ spec:
   containers:
   - image: lightbend-docker-registry.bintray.io/cloudstate-chat-sample/presence:latest    # <-- Change this to your image
     name: presence
-  #statefulStore:    # <-- Uncomment these two lines to use the Postgres statefulstore                                                         
-    #name: postgres-store-chat  
+  #storeConfig:    # <-- Uncomment these four lines to use the Postgres statefulstore
+    #database: presence
+    #statefulStore:
+      #name: postgres-store-chat
 ```
 
 Deploy the service to your project namespace
@@ -171,8 +175,10 @@ spec:
   containers:
   - image: lightbend-docker-registry.bintray.io/cloudstate-chat-sample/chat:latest    # <-- Change this to your image
     name: chat
-  #statefulStore:    # <-- Uncomment these two lines to use the Postgres statefulstore                                                         
-    #name: postgres-store-chat  
+  #storeConfig:    # <-- Uncomment these four lines to use the Postgres statefulstore
+    #database: chat
+    #statefulStore:
+      #name: postgres-store-chat 
 ```
 
 Deploy the service to your project namespace
