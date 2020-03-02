@@ -1,6 +1,6 @@
 apiVersion: cloudstate.io/v1alpha1
 kind: StatefulStore
 metadata:
-  name: postgres-store-chat-ariano
+  name: postgres-store-chat
 spec:
   postgres: {}
